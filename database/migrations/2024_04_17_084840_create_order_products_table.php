@@ -20,6 +20,7 @@ class CreateOrderProductsTable extends Migration
             $table->integer('quantity')->nullable();
             $table->float('unit_price')->nullable();
             $table->float('subtotal')->nullable();
+            $table->string('status')->nullable()->default('invalide'); 
             $table->foreign('order_id')->references('id')->on('orders')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->nullable();
             $table->timestamps();

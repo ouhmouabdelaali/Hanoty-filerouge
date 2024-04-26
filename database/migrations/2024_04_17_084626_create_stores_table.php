@@ -23,7 +23,7 @@ class CreateStoresTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('logo')->nullable();
             $table->string('image')->nullable();
-            $table->foreignId('addres_id')->constrained('addresses');
+            $table->foreignId('addres_id')->nullable()->constrained('addresses');
             $table->timestamps();
         });
     }

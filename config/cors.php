@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Store\File\Paths;
+
 return [
 
     /*
@@ -16,7 +18,7 @@ return [
     */
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
-
+   
     'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],

@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Stock;
+// use App\Models\Stock;
 use App\Models\Product;
 
 class UserController extends Controller
 {
+   
     /**
      * Where to redirect users after login.
      *
@@ -23,7 +24,7 @@ class UserController extends Controller
      * Show the application's login form.
      *
      * @return \Illuminate\View\View
-     */
+     */ 
     public function showLoginForm()
     {
         return view('auth.login');
@@ -36,7 +37,7 @@ class UserController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.registration');
     }
 
     /**
@@ -82,7 +83,6 @@ class UserController extends Controller
 
         return redirect()->route('createstoreform');
 
-        // return redirect()->route('loginform')->with('success', 'Your account has been created successfully. Please log in.');
     }
 
     /**
@@ -115,7 +115,7 @@ class UserController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => ($data['role'] == 'commercial') ? 1 : 2, // Assuming 1 for commercial and 2 for provider role_id
+            'role_id' => ($data['role'] == 'commercial') ? 1 : 2, 
         ]);
     }
 
@@ -138,39 +138,54 @@ class UserController extends Controller
 
 
     public function profile(){
+
         // $stocks = Stock::with('product')->get(); 
 
         $stocks = Auth::user()->store->stocks()->with('product')->get();
-        var_dump(Auth::user()->store->name,Auth::user()->store->image);
-        foreach ($stocks as $stock) {
-            $stockId = $stock->quantity; 
-            $productName = $stock->product->name;
-            $price =$stock->product->price;
-            var_dump($price);
-            var_dump($productName);
-            var_dump($stockId);
-        }
-        foreach ($stocks as $stock) {
-            $prodects = $stocks->pr
-            foreach ($prodects as $prodect) {
-                $stocks
-            }
-        }
-        
-        // $user = Auth::user();
-        // dd(Auth::user()->store->stocks()->id);
-        // // Retrieve the stocks associated with the store owned by the authenticated user
-        // $stocks = $user->store->stocks()->with('product')->get();
-    
-        // $stocks()->product->name  
+      
+        // if($stocks){
+            return view('acount.profile',compact('stocks'));
+        // }else
 
 
-        // return view('acount.profile');
     }
 
+
+
+
    public function dashborde()
-   {
+   {  
+   
+        // $user = Auth::user();
+        
+        // $products = Product::where('provider_id', $user->id)->with(['provider', 'provider.store'])->get();
+        // // $products =  $user->stocks->product->provider();
+        // $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->get();compact('products','stocks')
+
+    //   dd ($stocks ->product->provider_id);                   
+    
         return view('acount.dashborde');
    }
+
+ 
+   public function provadershow()
+ {
+    
+ 
+ 
+        $latestProviders = User::where('role_id', 2) // Filter users with role_id 2
+    ->whereHas('store') // Ensure users have associated stores
+    ->latest() // Get the latest users
+    ->take(3) // Limit the number of results to 3
+    ->with('store') // Eager load the associated store
+    ->get();
+
+          $providers = User::where('role_id', 2)->whereHas('store')->with('store')->paginate(8);
+
+
+        return view('main.provaders', compact('providers', 'latestProviders'));
+
+}
+
 
 }

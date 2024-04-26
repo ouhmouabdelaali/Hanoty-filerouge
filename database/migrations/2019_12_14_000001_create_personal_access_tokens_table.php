@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,10 +16,12 @@ class CreatePersonalAccessTokensTable extends Migration
             $table->id();
             $table->morphs('tokenable');
             $table->string('name');
-            $table->string('token', 64)->unique();
+            $table->text('token');
             $table->text('abilities')->nullable();
             $table->timestamp('last_used_at')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('expires_at')->nullable(); // Ensure expires_at column is included
         });
     }
 

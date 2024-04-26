@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,8 +29,14 @@ class Store extends Model
     {
         return $this->hasMany(Stock::class);
     }
+
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

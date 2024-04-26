@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@extends('component.app')
 
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+@section('content')
+
+@include('component.navebare') 
+
     
 
-<div class="font-mono bg-gray-400">
+<div class="font-mono bg-gray-400 mt-24">
 		<!-- Container -->
 		<div class="container mx-auto">
 			<div class="flex justify-center px-6 my-12">
@@ -92,3 +84,8 @@
 
 </body>
 </html>
+
+
+
+
+@endsection 
