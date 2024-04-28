@@ -52,20 +52,20 @@ public function createstore(Request $request)
     $store->categorie_id = $request->category;
 
 
-    // Upload store image
+ 
     $storeImagePath = 'images/stores/';
     $storeImageName = date('YmdHis') . '.' . $request->file('store_image')->getClientOriginalExtension();
     $request->file('store_image')->move($storeImagePath, $storeImageName);
     $store->image = $storeImageName;
 
-    // Upload store logo
+    
     $storeLogoPath = 'images/logos/';
     $storeLogoName = date('YmdHis') . '.' . $request->file('store_logo')->getClientOriginalExtension();
     $request->file('store_logo')->move($storeLogoPath, $storeLogoName);
     $store->logo = $storeLogoName;
 
     
-    // Find the address ID based on the input data
+
     $address = Address::where('street', $request->street)
                       ->where('city', $request->city)
                       ->where('state', $request->state)
@@ -73,7 +73,7 @@ public function createstore(Request $request)
                       ->first();
 
                
-    // Associate the found address with the store
+   
     if ($address) {
         $store->address()->associate($address);
        

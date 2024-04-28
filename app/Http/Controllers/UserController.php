@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 // use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Store;
 
 class UserController extends Controller
 {
@@ -54,7 +55,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-            // Authentication passed...
+       
             $request->session()->regenerate();
       
 
@@ -139,13 +140,17 @@ class UserController extends Controller
 
     public function profile(){
 
-        // $stocks = Stock::with('product')->get(); 
 
-        $stocks = Auth::user()->store->stocks()->with('product')->get();
+
+        // $stocks = Auth::user()->store->stocks()->with('product')->get();
+        $stocks = Auth::user()->store->stocks()
+        ->whereHas('product') 
+        ->with('product')
+        ->get();
+        $souscategorys = Auth::user()->store->category->sousCategories;
+    //   dd($souscategorys);
+         return view('acount.profile',compact('stocks','souscategorys'));
       
-        // if($stocks){
-            return view('acount.profile',compact('stocks'));
-        // }else
 
 
     }
@@ -153,31 +158,46 @@ class UserController extends Controller
 
 
 
-   public function dashborde()
-   {  
-   
         // $user = Auth::user();
         
         // $products = Product::where('provider_id', $user->id)->with(['provider', 'provider.store'])->get();
         // // $products =  $user->stocks->product->provider();
         // $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->get();compact('products','stocks')
+    // $products = Product::where('provider_id', $user->id)->with(['provider', 'provider.store'])->get();
 
-    //   dd ($stocks ->product->provider_id);                   
+
+    //   dd ($stocks ->product->provider_id); 
+//    public function dashborde()  
+//    {  
+   
+                  
+//     $user = Auth::user();
+        
+//     // $products =  $user->stocks->product->provider();
+//     $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->get();
     
-        return view('acount.dashborde');
-   }
+//         return view('acount.dashborde',compact('stocks'));
+//    }
+public function dashborde()
+{  
+    $user = Auth::user();
+    $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->paginate(1); // Paginate with 10 items per page
+    
+    return view('acount.dashborde', compact('stocks'));
+}
 
+   
  
    public function provadershow()
  {
     
  
  
-        $latestProviders = User::where('role_id', 2) // Filter users with role_id 2
-    ->whereHas('store') // Ensure users have associated stores
-    ->latest() // Get the latest users
-    ->take(3) // Limit the number of results to 3
-    ->with('store') // Eager load the associated store
+        $latestProviders = User::where('role_id', 2)   
+    ->whereHas('store') 
+    ->latest() 
+    ->take(3) 
+    ->with('store') 
     ->get();
 
           $providers = User::where('role_id', 2)->whereHas('store')->with('store')->paginate(8);
@@ -187,5 +207,11 @@ class UserController extends Controller
 
 }
 
+
+public function provaderview(Request $request , $id)
+{
+
+    
+}
 
 }

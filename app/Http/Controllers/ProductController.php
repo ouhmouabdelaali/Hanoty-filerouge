@@ -33,7 +33,7 @@ class ProductController extends Controller
         return view('product.create', compact('categories'));
     }
     
-    // Function to store a new product
+  
     public function store(Request $request)
     {
         $request->validate([
@@ -43,7 +43,7 @@ class ProductController extends Controller
             'sous_category_id' => 'required|exists:sous_categories,id',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' 
 
-            // Add validation for other fields as needed
+           
         ]);
     
 
@@ -59,13 +59,13 @@ class ProductController extends Controller
         $stock->save();
     
         foreach ($request->file('images') as $index => $image) {
-            // Generate a unique image name using current timestamp and original file extension
+         
             $imageName = date('YmdHis') . '_' . $index . '.' . $image->getClientOriginalExtension();
             
-            // Move the uploaded file to the storage path with the generated name
+          
             $image->storeAs('images/products', $imageName);
             
-            // Save the image name to the database
+            
             Image::create([
                 'image_name' => $imageName,
                 'product_id' => $product->id // Assuming $productId holds the ID of the product
@@ -93,8 +93,8 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'sous_category_id' => 'required|exists:sous_categories,id',
-             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Adjust validation rules as needed
-     // Add validation for other fields as needed
+             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' 
+    
         ]);
     
 
@@ -163,6 +163,46 @@ public function delete($id)
     return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
 }
 
+//    /**
+//      * Search for products based on the given query.
+//      *
+//      * @param  Request  $request
+//      * @return \Illuminate\Http\JsonResponse
+//      */
+//     public function searchforproduct(Request $request)
+//     {
+       
+//         $request->validate([
+//             'query' => 'required|string',
+//         ]);
+
+      
+//         $query = $request->input('query');
+
+      
+//         $products = Product::where('name', 'like', "%$query%")->get();
+
+      
+//         return response()->json($products);
+//     }
+public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    // Perform the search query
+    $results = Product::where('name', 'like', "%$query%")->get();
+
+    // Return the search results to the view
+    return view('search-results', compact('results'));
+}
+
+public function prductview(Request $request)
+{
+  $product = Product::where('id',$request->id);
+
+  return view('main.provaderview',compact('product'));
+
+}
 }
 
 

@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('hanoty');
 })->name('/');
 
+// Route::get('/search', 'ProductController@search')->name('search');
+
+
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('loginform');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
@@ -30,6 +33,8 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+// routes/web.php
+// Route::get('/products/filter/{subcategoryId}', [UserController::class, 'filterProductsBySubcategory'])->name('filterProductsBySubcategory');
 
 Route::get('/dashborde', [UserController::class, 'dashborde'])->name('dashborde');
 
@@ -55,3 +60,10 @@ Route::get('/prodacts/', [ProductController::class, 'productpage'])->name('proda
 Route::get('/prodacts/{id}', [ProductController::class, 'productshow'])->name('prodactshow');
 
 Route::get('/createprodacts/', [ProductController::class, 'createForm'])->name('createForm');
+
+
+
+// Route::get('/search', [ProductController::class, 'searchforproduct']);
+use  App\Http\Controllers\TestController;
+
+Route::get('/test', [TestController::class, 'pr ofile'])->name('test');

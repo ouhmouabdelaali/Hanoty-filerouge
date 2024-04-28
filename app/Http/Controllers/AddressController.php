@@ -19,7 +19,7 @@ class AddressController extends Controller
         // Retrieve cities for the given state
         $cities = Address::where('state', $state)->pluck('city')->toArray();
         
-        return response()->json($cities);
+        return response()->json($cities);   
     }
 
     public function getStates($country)

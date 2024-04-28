@@ -106,17 +106,20 @@
 <!-- component -->
 <!-- component -->
 <div>
-  <div class="px-10 py-20 bg-gray-100 grid gap-10 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2">
+  <div class="px-10 py-20 bg-white grid gap-10 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2">
    
 @foreach ($products as $product)
   <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
       <div>
-        <img src="{{asset('images/products/'.$product->images[0])}}" alt="" />
+      @if(isset($product->images[0]))
+    <img src="{{ asset('images/products/' . $product->images[0]) }}" alt="" />
+@endif
+
       </div>
       <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
+        <h3 class="text-md font-semibold text-gray-600">{{$product->name}}</h3>
         <p class="mt-4 text-lg font-thin">${{$product->price}}</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
+        <span class="flex items-center justify-center mt-4 w-full bg-indigo-600  hover:bg-yellow-500 py-1 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
@@ -126,86 +129,7 @@
     </div>
 @endforeach
 
-    <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-      <div>
-        <img src="https://media.cnn.com/api/v1/images/stellar/prod/201116214440-9-macbook-air-review-silicon-underscoredjpg.jpg?q=w_2615,h_1556,x_0,y_0,c_fill" alt="" />
-      </div>
-      <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
-        <p class="mt-4 text-lg font-thin">$ 2400</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <button class="font-semibold text-gray-800">Add to Basket</button>
-        </span>
-      </div>
-    </div>
-    
-    <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-      <div>
-        <img src="https://www.macworld.com/wp-content/uploads/2022/01/macbook-pro-compare.jpg?quality=50&strip=all&w=1024" alt="" />
-      </div>
-      <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
-        <p class="mt-4 text-lg font-thin">$ 2400</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <button class="font-semibold text-gray-800">Add to Basket</button>
-        </span>
-      </div>
-    </div>
-   
-   
-    <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-      <div>
-        <img src="https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/g1jzwrwrlfim5wux_1623141909.jpeg" alt="" />
-      </div>
-      <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
-        <p class="mt-4 text-lg font-thin">$ 2400</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <button class="font-semibold text-gray-800">Add to Basket</button>
-        </span>
-      </div>
-    </div>
-   
-    <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-      <div>
-        <img src="https://cdn.mos.cms.futurecdn.net/GfinEMFXnT42BFxAcDc2rA.jpg" alt="" />
-      </div>
-      <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
-        <p class="mt-4 text-lg font-thin">$ 2400</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <button class="font-semibold text-gray-800">Add to Basket</button>
-        </span>
-      </div>
-    </div>
-    
-    <div class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
-      <div>
-        <img src="https://images.indianexpress.com/2021/12/macbook-pro-2021-review-featured-image.jpg" alt="" />
-      </div>
-      <div class="py-4 px-4 bg-white">
-        <h3 class="text-md font-semibold text-gray-600">Apple MacBook Pro M1 13.3&quot; Silver 16GB/512GB (MYDC2FN/A-16GB)</h3>
-        <p class="mt-4 text-lg font-thin">$ 2400</p>
-        <span class="flex items-center justify-center mt-4 w-full bg-yellow-400 hover:bg-yellow-500 py-1 rounded">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <button class="font-semibold text-gray-800">Add to Basket</button>
-        </span>
-      </div>
-    </div>
+
  
 </div>
 </div>
@@ -234,97 +158,33 @@
         
          
         </div>
-        <div class="grid grid-cols-4 p-8">
+        <!-- <div class="grid grid-cols-4 p-8"> -->
+            <div class="px-10 py-20 bg-white grid gap-10 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2">
+
+
   @foreach ($categories as $categorie )
          
   <div class="col-span-1 py-6">
                 <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
+                    <a href="{{ route('profile') }}" target="_blank">
                     
-                        <img src="" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
+                        <img src="{{ isset($provider->store) ? asset('images/categories/' . $provider->store->logo) : asset('images/logos/register.png') }}" alt="" class="rounded-2xl relative">                     
+                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>{{$categorie->name}}</p></div>
                         
                     </a>
                 </div>
             </div>
      @endforeach 
+ 
 
 
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/201/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
 
 
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/202/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
             
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/203/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
 
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/204/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/208/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/206/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
-            <div class="col-span-1 py-6">
-                <div class="relative">
-                    <a href="http://tradydaddy.com/" target="_blank">
-                    
-                        <img src="https://picsum.photos/id/209/400/400" alt="" class="rounded-2xl relative">                     
-                        <div class="absolute bottom-0 left-0 text-xl p-4 w-full text-white font-bold"><p>Absolute child</p></div>
-                        
-                    </a>
-                </div>
-            </div>
-        </div>
+
+
+
 </div> 
 
 
