@@ -22,7 +22,7 @@ class StoreController extends Controller
     }
 
 
-    
+            
 public function createstore(Request $request)
 {
     // Validate incoming request

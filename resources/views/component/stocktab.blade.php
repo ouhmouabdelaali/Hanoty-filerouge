@@ -30,7 +30,7 @@
                                     </div>
                                     <span class="font-medium">{{ $stock->product->name }}</span>
                                 </div>
-                            </td>
+                            </td>   
                             <td class="py-3 px-6 text-left">
                                 <div class="flex items-center">
                                     <div class="mr-2">

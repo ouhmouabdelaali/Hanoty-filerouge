@@ -18,8 +18,8 @@ class ProductController extends Controller
      */
     public function productpage()
     {
-        $categories = Category::paginate(10);
-        $products = Product::paginate(8);
+        $categories = Category::paginate(4 ) ;
+        $products = Product::paginate(4);
         return view('main.products', compact('products', 'categories'));
 
     }
@@ -124,7 +124,7 @@ class ProductController extends Controller
             ]);
         }
         
-    
+       
         return redirect()->route('product.edit', $id)->with('success', 'Product updated successfully.');
     }
     
@@ -134,7 +134,8 @@ class ProductController extends Controller
     public function productshow($id)
     {
         $product = Product::findOrFail($id);
-        return view('dashboard.providers_list', compact('product'));
+
+        return view('main.productview', compact('product'));
     }
 
 
@@ -185,24 +186,21 @@ public function delete($id)
       
 //         return response()->json($products);
 //     }
-public function search(Request $request)
-{
-    $query = $request->input('query');
 
-    // Perform the search query
-    $results = Product::where('name', 'like', "%$query%")->get();
 
-    // Return the search results to the view
-    return view('search-results', compact('results'));
-}
 
-public function prductview(Request $request)
-{
-  $product = Product::where('id',$request->id);
+// public function search(Request $request)
+// {
+//     $query = $request->input('query');
 
-  return view('main.provaderview',compact('product'));
+//     // Perform the search query
+//     $results = Product::where('name', 'like', "%$query%")->get();
 
-}
+//     // Return the search results to the view
+//     return view('search-results', compact('results'));
+// }
+
+
 }
 
 

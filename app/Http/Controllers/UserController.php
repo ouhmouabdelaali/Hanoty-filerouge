@@ -200,7 +200,7 @@ public function dashborde()
     ->with('store') 
     ->get();
 
-          $providers = User::where('role_id', 2)->whereHas('store')->with('store')->paginate(8);
+          $providers = User::where('role_id', 2)->whereHas('store')->with('store')->paginate(1);
 
 
         return view('main.provaders', compact('providers', 'latestProviders'));
@@ -208,10 +208,27 @@ public function dashborde()
 }
 
 
-public function provaderview(Request $request , $id)
-{
+// public function provaderviewdityel($id)
+// {
 
+//     $provader = User::findOrFail($id)->store->stocks()
+//     ->whereHas('product') 
+//     ->with('product')
+//     ->get();
+//     $stocks= User::findOrFail($id)->with('store');
+//     $souscategorys =User::findOrFail($id)->store->category->sousCategories;
+
+
+
+//     return view('main.provaderview', compact('provader','souscategorys'));
+
+// }
+public function provaderviewdityel($id){
     
+$user = User::with('store.stocks.product')->findOrFail($id);
+$souscategorys = $user->store->category->sousCategories;
+
+return view('main.provaderview', compact('user', 'souscategorys'));
 }
 
 }

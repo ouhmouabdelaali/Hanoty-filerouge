@@ -19,9 +19,10 @@
 
 @if ($latestProvider->store) {{-- Check if store exists --}}
     <div class="space-y-4 text-center">
-        <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
+
+     <a href="{{ route('provaderviewdityel', ['id' => $latestProvider->id]) }}"> <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
              src="{{ asset('images/logos/' . $latestProvider->store->logo) }}"
-             alt="woman" loading="lazy" width="640" height="805">
+             alt="woman" loading="lazy" width="640" height="805"></a>  
         <div>
             <h4 class="text-2xl">{{ $latestProvider->store->name }}</h4>
             <span class="block text-sm text-gray-500">{{ $latestProvider->store->Category->name }}</span>
@@ -32,7 +33,6 @@
 @endif
 
 @endforeach
-
 
 
             
@@ -73,9 +73,9 @@
         
             <div class="flex flex-col mr-5 text-center mb-11 lg:mr-16">
               <div class="inline-block mb-4 relative shrink-0 rounded-[.95rem]">
-              <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]" 
+          <a href="{{ route('provaderviewdityel', ['id' => $provider->id]) }}">   <img class="inline-block shrink-0 rounded-[.95rem] w-[150px] h-[150px]" 
     src="{{ isset($provider->store) ? asset('images/logos/' . $provider->store->logo) : asset('path/to/default/logo.jpg') }}" 
-    alt="avatar image">
+    alt="avatar image"></a> 
 
                
               </div>
@@ -95,13 +95,12 @@
          @endforeach
  
 
-           
-  
-  
-
-
-
           </div>
+
+          <div class="pagination justify-content-center">
+                    {{ $providers->links() }}
+            </div>
+
         </div>
       </div>
     </div>

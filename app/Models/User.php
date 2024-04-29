@@ -62,6 +62,21 @@ class User extends Authenticatable
     }
 
 
+
+    public function isProvider()
+    {
+        return $this->role->name === 'Provider';
+    }
+    public function isCommercial()
+    {
+        return $this->role->name === 'Commercial';
+    }
+
+    public function invalidOrders()
+    {
+        return $this->hasMany(Order::class)->where('status', '!=', 'valid');
+    }
+
 }
 
 

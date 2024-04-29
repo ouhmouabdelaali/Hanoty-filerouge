@@ -63,7 +63,11 @@ Route::get('/createprodacts/', [ProductController::class, 'createForm'])->name('
 
 
 
-// Route::get('/search', [ProductController::class, 'searchforproduct']);
-use  App\Http\Controllers\TestController;
+Route::get('/provader/{id}',[UserController::class, 'provaderviewdityel'])->name('provaderviewdityel');
 
-Route::get('/test', [TestController::class, 'pr ofile'])->name('test');
+
+
+// Route::get('/search', [ProductController::class, 'searchforproduct']);
+// use  App\Http\Controllers\TestController;
+
+// Route::get('/test', [TestController::class, 'pr ofile'])->name('test');

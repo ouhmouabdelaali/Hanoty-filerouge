@@ -49,6 +49,8 @@
 
         <div class="relative ">
             <div class="sliderAx h-4/5">
+
+
                 <div id="slider-1" class="mx-auto">
                     <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
                         <div class="md:w-1/2">
@@ -70,6 +72,7 @@
                     </div> <!-- container -->
                     <br>
                 </div>
+
             </div>
             <div  class="flex justify-between w-12 mx-auto pb-2">
                 <button id="sButton1" onclick="sliderButton1()" class="bg-purple-400 rounded-full w-4 pb-2 " ></button>
@@ -132,6 +135,9 @@
 
  
 </div>
+<div class="pagination justify-content-center">
+                    {{ $products->links() }}
+            </div>
 </div>
 
 
@@ -175,18 +181,11 @@
                 </div>
             </div>
      @endforeach 
- 
-
-
-
-
-            
-
-
-
-
+      
 </div> 
-
+<div class="pagination justify-content-center">
+                    {{ $categories->links() }}
+            </div>
 
 
 
