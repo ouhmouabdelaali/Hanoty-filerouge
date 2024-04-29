@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StoreController;
 use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\ProductController;
@@ -61,9 +62,17 @@ Route::get('/prodacts/{id}', [ProductController::class, 'productshow'])->name('p
 
 Route::get('/createprodacts/', [ProductController::class, 'createForm'])->name('createForm');
 
-
-
 Route::get('/provader/{id}',[UserController::class, 'provaderviewdityel'])->name('provaderviewdityel');
+
+
+
+route::post('/stororder/{id}',[OrderController::class,'stororder'])->name('stororder');
+
+route::get('validateorder',[OrderController::class,'validateorder'])->name('validateorder');
+
+route::get('displyorders',[OrderController::class,'displyorders'])->name('displyorders');
+
+
 
 
 

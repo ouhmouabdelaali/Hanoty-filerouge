@@ -20,3 +20,6 @@ class OrderProduct extends Model
         return $this->belongsTo(Product::class);
     }
 }
+
+
+// with(['product.provider.store'])

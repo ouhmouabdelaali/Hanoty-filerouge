@@ -22,7 +22,7 @@ class StoreController extends Controller
     }
 
 
-            
+
 public function createstore(Request $request)
 {
     // Validate incoming request
@@ -78,7 +78,7 @@ public function createstore(Request $request)
         $store->address()->associate($address);
        
     }else {
-    //    dd('holla'); 
+        
     }
     $store->save();
 

@@ -166,6 +166,7 @@ class UserController extends Controller
     // $products = Product::where('provider_id', $user->id)->with(['provider', 'provider.store'])->get();
 
 
+
     //   dd ($stocks ->product->provider_id); 
 //    public function dashborde()  
 //    {  
@@ -181,7 +182,7 @@ class UserController extends Controller
 public function dashborde()
 {  
     $user = Auth::user();
-    $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->paginate(1); // Paginate with 10 items per page
+    $stocks = Auth::user()->store->stocks()->with(['product.provider.store'])->paginate(1); 
     
     return view('acount.dashborde', compact('stocks'));
 }

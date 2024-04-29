@@ -38,18 +38,29 @@
 
                                  <td class="py-3 px-6 text-center">Price:${{$stock->product->price}}</td>
 
-                                 <form action="  " method="post" class="inline-block mt-2 pr-1">
-                            
-                                <label for="pricequantity" class="float-left font-normal block text-sm text-gray-600 text-lg">Quantity</label>
-                                <input type="number" id="quantity" name="quantity" placeholder="quantity" class="placeholder-gray-500 w-full border border-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-700" style="color: black;">
-                            
-                                 </form>
+                                 <!-- <form action="" method="post" class="inline-block mt-2 pr-1">
+                                 <label for="pricequantity" class="float-left font-normal block text-sm text-gray-600 text-lg">Quantity</label>
+                                 <input type="number" id="quantity" name="quantity" placeholder="quantity" class="placeholder-gray-500 w-full border border-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-700" style="color: black;">
+                                 <button type="submit" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Deactivate</button>
+                                
+                                </form> -->
+<form action="{{ route('stororder', ['id' => $stock->product->id]) }}" method="post" class="inline-block mt-2 pr-1">
+    @csrf 
+    <label for="quantity" class="float-left font-normal block text-sm text-gray-600 text-lg">Quantity</label>
+    <input type="number" id="quantity" name="quantity" placeholder="Quantity" class="placeholder-gray-500 w-full border border-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-700" style="color: black;">
+    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+        <button type="submit" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Order</button>
+    </div>
+</form>
+
+                           
                                   
 </div>                              
 
-        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Deactivate</button>
-          <button  data-modal-target="myModal{{$stock->product->id}}" type="button" class="hideModalButton mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+         <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+         
+         <button  data-modal-target="myModal{{$stock->product->id}}" type="button " class="hideModalButton mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+        
         </div>
       </div>
     </div>

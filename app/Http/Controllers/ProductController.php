@@ -117,7 +117,7 @@ class ProductController extends Controller
          
             $image->storeAs('images/products', $imageName);
             
-            // Create a new image record in the database
+           
             Image::create([
                 'image_name' => $imageName,
                 'product_id' => $product->id
